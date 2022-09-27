@@ -5,12 +5,12 @@ from api.models import Todo
 
 
 
-class TodoSerializer(serializers.HyperlinkedModelSerializer):
+class TodoSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
         model = Todo
-        fields = ['url', 'id', 'author', 'state', 'name', 'description', 'created_date']
+        fields = "__all__"
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

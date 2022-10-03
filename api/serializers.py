@@ -5,6 +5,13 @@ from api.models import Todo
 
 
 
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+
 class TodoSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
 

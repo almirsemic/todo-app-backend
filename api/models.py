@@ -9,12 +9,12 @@ class Todo(models.Model):
         ('In Review', 'In Review'),
         ('Done', 'Done')
     )
-    author = models.ForeignKey(
-        'auth.User', related_name='todo', on_delete=models.CASCADE)
+    author = models.ForeignKey('auth.User', related_name='todo', on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
-    state = models.CharField(max_length=100, choices=CHOICES_FIELD)
+    state = models.CharField(max_length=100, choices = CHOICES_FIELD)
     name = models.CharField(max_length=100, blank=False)
     description = models.TextField()
 
     class Meta:
         ordering = ['created_date']
+        

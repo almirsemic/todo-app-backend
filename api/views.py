@@ -1,11 +1,18 @@
 from api.models import Todo
-from api.serializers import TodoSerializer, UserSerializer, ChangePasswordSerializer
+from api.serializers import TodoSerializer, UserSerializer, ChangePasswordSerializer, UpdateUserSerializer
 from rest_framework import viewsets, permissions, renderers, status, generics
 from django.contrib.auth.models import User
 from api.permissions import IsAuthorOrReadOnly
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated   
+
+
+class UpdateProfileView(generics.UpdateAPIView):
+
+    queryset = User.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UpdateUserSerializer
 
 class ChangePasswordView(generics.UpdateAPIView):
     serializer_class = ChangePasswordSerializer
